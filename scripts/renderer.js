@@ -64,6 +64,26 @@ class Renderer {
 
     // framebuffer:  canvas ctx image data
     drawSlide3(framebuffer) {
+        this.drawName([252, 3, 161, 255], framebuffer);
+
+    }
+
+    drawName(color, framebuffer){
+        //J
+        this.drawLine({x: 100, y: 400}, {x: 300, y: 400}, color, framebuffer);
+        this.drawBezierCurve({x: 100, y: 100}, {x: 225, y: 50}, {x: 300, y: 100}, {x: 200, y: 400}, color, framebuffer);
+
+        //a
+        this.drawCirle({x: 350, y: 150}, 50, color, framebuffer);
+        this.drawLine({x: 400, y: 100}, {x: 400, y: 200}, color, framebuffer);
+
+        //c
+        this.drawBezierCurve({x: 525, y: 200}, {x: 400, y: 200}, {x: 400, y: 100}, {x: 525, y: 100}, color, framebuffer);
+
+        //k
+        this.drawLine({x: 600, y: 400}, {x: 600, y: 100}, color, framebuffer);
+        this.drawLine({x: 600, y: 150}, {x: 725, y: 250}, color, framebuffer);
+        this.drawLine({x: 600, y: 150}, {x: 725, y: 100}, color, framebuffer);
 
     }
 
@@ -83,6 +103,10 @@ class Renderer {
         this.drawLine(left_bottom, left_top, color, framebuffer);
         //top edge
         this.drawLine(left_top, right_top, color, framebuffer);
+        if (this.show_points) {
+            //this.drawCirle(left_bottom, 5, [13, 13, 12, 250], framebuffer);
+            //this.drawCirle(right_bottom, 5, [13, 13, 12, 250], framebuffer);
+        }
         
     }
 
@@ -99,6 +123,10 @@ class Renderer {
             x1 = Math.round(center.x + (radius * Math.cos(i)));
             y1 = Math.round(center.y + (radius * Math.sin(i)));
             this.drawLine({x: x0, y: y0}, {x: x1, y: y1}, color, framebuffer);
+            if (this.show_points){
+                this.drawCirle({x: x0, y: y0}, 5, [13, 13, 12, 250], framebuffer);
+                //drawCirle({x: x1, y: y1}, 5, [13, 13, 12, 250], framebuffer);
+            }
         }
     }
 
@@ -124,6 +152,10 @@ class Renderer {
             
             console.log(x0, y0, x1, y1);
             this.drawLine({x: x0, y: y0}, {x: x1, y: y1}, color, framebuffer);
+            if (this.show_points){
+                this.drawCirle({x: x0, y: y0}, 5, [37, 204, 81, 250], framebuffer);
+                //drawCirle({x: x1, y: y1}, 5, [37, 204, 81, 250], framebuffer);
+            }
 
         }
     }
